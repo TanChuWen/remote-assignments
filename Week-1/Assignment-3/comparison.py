@@ -21,4 +21,11 @@ def find_position(numbers, target):
     for each in numbers:
         if target == each:
             return idx
+        idx += 1
     return -1
+
+#測試
+print (find_position([5,3,1],1)) #答案是2
+print (find_position([5,3,1],0)) #-1
+print (find_position([5,3,1],7)) #-1
+print (find_position([5,3,1],5)) #0
