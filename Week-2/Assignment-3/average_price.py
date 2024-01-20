@@ -1,5 +1,11 @@
 # Complete the function below by Python which can calculate the average price of all the products.
 # print the average price of all products (round to 3 decimal)
+
+# {"products": [
+#     {"name": "Product 1", "price": 100},
+#     {"name": "Product 2", "price": 700},
+#     {"name": "Product 3", "price": 300}
+# ]}
 # 思路：先拆解一下題目給的資料，這是一個字典裡面包字典（也就是有key, value 對應）的結構。第一層的字典是 "products" 對應到一個陣列，這個陣列包含三個字典元素。
 # 第二層字典是每個字典元素都有兩個 key-value pair，"name" 對應到商品名稱的字串，"price" 對應到商品價格的數字。
 # 要計算所有商品價格的平均值，我需要先取得所有商品的價格總和，然後除以商品總數。
@@ -24,13 +30,6 @@ def avg(data):
     rounded_average = round(average_price, 3)
 
     return rounded_average
-
-# 測試程式碼
-data = {"products": [
-    {"name": "Product 1", "price": 100},
-    {"name": "Product 2", "price": 700},
-    {"name": "Product 3", "price": 300}
-]}
 
 
 print(avg({"products": [{ "name": "Product 1","price": 100},{"name": "Product 2","price": 700},{"name": "Product 3","price": 300}]}))
