@@ -29,3 +29,5 @@ print (find_position([5,3,1],1)) #答案是2
 print (find_position([5,3,1],0)) #-1
 print (find_position([5,3,1],7)) #-1
 print (find_position([5,3,1],5)) #0
+
+
