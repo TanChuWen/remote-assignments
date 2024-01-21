@@ -1,9 +1,9 @@
 function max(numbers) {
     if (!numbers || numbers.length === 0) {
-        return null; // Handle empty array
+        return null; // 如果它不是數字或是數字的長度等於0，就直接回傳 null 了
     }
 
-    let maxValue = numbers[0]; // Assume the first element is the max value
+    let maxValue = numbers[0]; //先假設陣列的第一個數字是最大值
 
     for (let i = 1; i < numbers.length; i++) {
         const num = numbers[i];
@@ -26,10 +26,10 @@ function findPosition(numbers, target) {
     return -1;
 }
 
-console.log(max([5,3,1]));
-console.log(max());
-console.log(max([-1,-5,-7]));
+// console.log(max([5,3,1]));
+// console.log(max());
+// console.log(max([-1,-5,-7]));
 
-console.log(findPosition([5,3,1,1,4],3));
-console.log(findPosition([5,3,1,1,4],1));
-console.log(findPosition([5,3,1,1,4],7));
+// console.log(findPosition([5,3,1,1,4],3));
+// console.log(findPosition([5,3,1,1,4],1));
+// console.log(findPosition([5,3,1,1,4],7));

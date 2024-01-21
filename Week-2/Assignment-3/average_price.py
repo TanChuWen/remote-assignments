@@ -18,12 +18,10 @@ def avg(data):
     # 遍歷每個商品，取得價格
     for product in products:
         total_price += product["price"]  #從名為 product 的字典中取得鍵為 "price" 的值
-        # 自己檢查，測試一下看看長什麼樣子：
         # print(product["price"])
 
     # 計算平均價格
     average_price = total_price / len(products)
-    # 自己檢查，測試一下看看長什麼樣子：
     # print(len(products))
 
     # 四捨五入到三位小數
