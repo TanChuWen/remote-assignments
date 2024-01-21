@@ -26,10 +26,10 @@ function findPosition(numbers, target) {
     return -1;
 }
 
-// console.log(max([5,3,1]));
-// console.log(max());
-// console.log(max([-1,-5,-7]));
+console.log(max([5,3,1]));
+console.log(max());
+console.log(max([-1,-5,-7]));
 
-// console.log(findPosition([5,3,1,1,4],3));
-// console.log(findPosition([5,3,1,1,4],1));
-// console.log(findPosition([5,3,1,1,4],7));
+console.log(findPosition([5,3,1,1,4],3));
+console.log(findPosition([5,3,1,1,4],1));
+console.log(findPosition([5,3,1,1,4],7));

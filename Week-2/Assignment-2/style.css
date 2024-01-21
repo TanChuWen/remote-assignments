@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    height: 50px;
+    background-color:lightgray;
+    font-size: 16px;
+
+}
+
+.logo{
+    margin-right: auto;
+    margin-left: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+.item-1, .item-2, .item-3, .item-4{
+    margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.welcome {
+    display: flex;
+    height: 300px;
+    background-color: azure;
+}
+
+.welcome-paragraph{
+    margin: auto;
+    font-size: 72px;
+}
+
+.content-layout{
+    display: flex;
+    height: 100px;
+}
+
+.section-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin: auto;
+}
+
+.content1-boxes, .content2-boxes{
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    padding: 10px;
+    margin: auto;
+
+}
+
+.box1, .box2, .box3, .box4 {
+    height: 160px;
+    padding: 10px;
+    border-color: white;
+    background-color: darkgrey;
+    border-width: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 580px;
+    margin: auto;
+    text-align: center;
+}
+
+.call-to-action{
+    display: flex;
+}
+
+button{
+    background-color: azure;
+    font-size: 12px;
+    margin: auto;
+}
+
+.hidden-boxes{
+    display: none;
+}
