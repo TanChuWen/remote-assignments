@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Calculator</title>
+    <!-- Link to the static styles.css file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <p id="welcomeMessage">Hello, My Server!</p>
+    <!--Show result of Assignment 3-3-->
+    <div id="demo">
+    <button type="button" onclick="showResult()">Press to show the result of Assignment 3-3</button>
+    </div>
+
+     <!--Show result of Assignment 3-4-->
+    <h1>Sum Calculator</h1>
+    <form id="sumForm">
+        <label for="numberInput">Enter a number:</label>
+        <input type="text" id="numberInput" name="numberInput">
+        <button type="button" onclick="calculateSum()">Calculate Sum</button>
+    </form>
+
+    <div id="result"></div>
+
+    <!-- Link to the static scripts.js file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
