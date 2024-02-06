@@ -13,8 +13,8 @@
     <form method="post" action="{{ url_for('process_form') }}">  <!--back to app.py and execute process_form()-->
         <!-- Common Form Fields -->
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required>
-
+        <input type="text" id="email" name="email" pattern="[a-zA-Z0-9._]+@[a-zA-Z0-9._]+\.[a-zA-Z]{2,}"required>
+        
         <br>
 
         <label for="password">Password:</label>
