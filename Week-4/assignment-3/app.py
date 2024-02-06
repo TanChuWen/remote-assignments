@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for
 import pymysql
-import ipdb
 
+#initialize Flask application
 app = Flask(__name__)
 
-mydb = pymysql.connect(
+#connect to MySQL database connection
+mydb = pymysql.connect(  
     host = "localhost",
     user = "root",
     passwd = "lisatanrocks308",
@@ -13,46 +14,49 @@ mydb = pymysql.connect(
 
 my_cursor = mydb.cursor() 
 
+#create user table if not exists
+my_cursor.execute("CREATE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(255), password VARCHAR(255))")
+
+
 @app.route('/')
-def home_page():
-    return render_template('index.html')
+def index():
+    return render_template('home.html')
 
-@app.route('/signup', methods=['POST'])
-def signup():
-    email = request.form['email']
-    password = request.form['password']
-    # ipdb.set_trace() #in order to debug
-    #check if email is not registered before
-    my_cursor.execute("SELECT * FROM user WHERE email = %s", (email,))
-    mydb.commit()
-    if my_cursor.fetchone() is None:
-        my_cursor.execute("INSERT INTO user (email, password) VALUES (%s, %s)", (email, password))
-        mydb.commit()
-        return redirect(url_for('member', message='Welcome, {}!'.format(email)))
+@app.route('/process_form', methods=['POST'])
+def process_form():
+    # Get the value of the clicked button (login or signup)
+    action = request.form.get('action')
+
+    if action == 'login':
+        # Handle login logic
+        email = request.form.get('email')
+        password = request.form.get('password')
+        my_cursor.execute("SELECT * FROM user WHERE email=%s AND password=%s",(email,password))
+
+        user = my_cursor.fetchone()
+        if user:
+            return render_template('member.html', result='Login successful!')
+        else:
+            return render_template('home.html', result='Invalid email or password. Please try again.')
+
+       
+    elif action == 'signup':
+        # Handle signup logic
+        email = request.form.get('email')
+        password = request.form.get('password')
+        #check if email already exists
+        my_cursor.execute("SELECT * FROM user WHERE email=%s",(email,))
+
+        existing_user = my_cursor.fetchone()
+        if existing_user:
+            return render_template('home.html', result='Email already exists. Please use a different email.')
+        else:
+            my_cursor.execute("INSERT INTO user(email, password) VALUE(%s,%s)", (email, password))
+            mydb.commit()
+            return render_template('member.html', result='Signup successful!')
     else:
-        return render_template('index.html', message='Email already registered')
-    
-@app.route('/login', methods=['POST'])
-def login():
-    email = request.form['email']
-    password = request.form['password']
+        # Handle unexpected or no button click
+        return "Invalid form submission"
 
-    # check if the pair of email and password exists in the user table
-    my_cursor.execute("SELECT * FROM user WHERE email=%s AND password=%s", (email, password))
-    mydb.commit()
-    if my_cursor.fetchone() is not None:
-        return redirect(url_for('member', message='Welcome back, {}!'.format(email)))
-    else:
-        return render_template('index.html', message='Invalid email or password')
-
-
-@app.route('/member') # If sign up/ log in successfully, show "Your access is permitted!"
-def member():
-    return render_template('member.html', message=request.args.get('message'))
-
-
-if __name__ == "__main__":
-    app.run(debug=True, port=3000)
-
-
-
+if __name__ == '__main__':
+    app.run(debug=True)

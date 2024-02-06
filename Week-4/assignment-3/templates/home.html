@@ -1,0 +1,36 @@
+<!-- templates/home.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Signup</title>
+</head>
+<body>
+    <h2>Login or Signup</h2>
+
+    <form method="post" action="{{ url_for('process_form') }}">  <!--back to app.py and execute process_form()-->
+        <!-- Common Form Fields -->
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+
+        <br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <br>
+
+        <!-- Login Button -->
+        <button type="submit" name="action" value="login">Login</button>
+
+        <!-- Signup Button -->
+        <button type="submit" name="action" value="signup">Signup</button>
+    </form>
+
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
